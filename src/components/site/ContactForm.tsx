@@ -10,7 +10,7 @@ const label = "text-sm font-semibold";
 export function ContactForm({ variant = "care" }: { variant?: "care" | "referral" | "career" }) {
   const [reviewed, setReviewed] = useState(false);
   const [inquiry, setInquiry] = useState<ContactInquiry>();
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [errors, setErrors] = useState<Partial<Record<keyof ContactInquiry, string>>>({});
 
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -58,9 +58,9 @@ export function ContactForm({ variant = "care" }: { variant?: "care" | "referral
   return (
     <form onSubmit={onSubmit} className="grid gap-5 border bg-card p-6 md:grid-cols-2 md:p-10" noValidate>
       <div className="md:col-span-2"><h2 className="text-2xl font-bold">{variant === "career" ? "Career inquiry" : variant === "referral" ? "Referral inquiry" : "Let's talk about your care needs"}</h2><p className="mt-3 text-sm text-muted-foreground">Online delivery is not available yet. You can review your details below, or call {SITE.phone} to reach our team.</p></div>
-      <label className={label}>Full name *<input name="name" required maxLength={100} defaultValue={inquiry?.name} autoComplete="name" aria-invalid={Boolean(errors.name)} aria-describedby={errors.name ? "name-error" : undefined} className={field} />{errors.name && <span id="name-error" className="mt-2 block text-sm text-destructive">{errors.name}</span>}</label>
-      <label className={label}>Phone *<input name="phone" type="tel" required maxLength={20} defaultValue={inquiry?.phone} autoComplete="tel" aria-invalid={Boolean(errors.phone)} aria-describedby={errors.phone ? "phone-error" : undefined} className={field} />{errors.phone && <span id="phone-error" className="mt-2 block text-sm text-destructive">{errors.phone}</span>}</label>
-      <label className={`${label} md:col-span-2`}>Email<input name="email" type="email" maxLength={255} defaultValue={inquiry?.email} autoComplete="email" aria-invalid={Boolean(errors.email)} aria-describedby={errors.email ? "email-error" : undefined} className={field} />{errors.email && <span id="email-error" className="mt-2 block text-sm text-destructive">{errors.email}</span>}</label>
+      <label className={label}>Full name *<input name="name" aria-label="Full name" required maxLength={100} defaultValue={inquiry?.name} autoComplete="name" aria-invalid={Boolean(errors.name)} aria-describedby={errors.name ? "name-error" : undefined} className={field} />{errors.name && <span id="name-error" className="mt-2 block text-sm text-destructive">{errors.name}</span>}</label>
+      <label className={label}>Phone *<input name="phone" aria-label="Phone" type="tel" required maxLength={20} defaultValue={inquiry?.phone} autoComplete="tel" aria-invalid={Boolean(errors.phone)} aria-describedby={errors.phone ? "phone-error" : undefined} className={field} />{errors.phone && <span id="phone-error" className="mt-2 block text-sm text-destructive">{errors.phone}</span>}</label>
+      <label className={`${label} md:col-span-2`}>Email<input name="email" aria-label="Email" type="email" maxLength={255} defaultValue={inquiry?.email} autoComplete="email" aria-invalid={Boolean(errors.email)} aria-describedby={errors.email ? "email-error" : undefined} className={field} />{errors.email && <span id="email-error" className="mt-2 block text-sm text-destructive">{errors.email}</span>}</label>
       {variant === "care" && (
         <label className={`${label} md:col-span-2`}>I'm reaching out for
           <select name="for" defaultValue={inquiry?.for} className={field}>
