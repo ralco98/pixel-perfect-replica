@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import team from "@/assets/team.jpg";
 import { ContactForm } from "@/components/site/ContactForm";
-import { ClientNote, PageHero, meta } from "@/components/site/blocks";
+import { PageHero, meta } from "@/components/site/blocks";
 
 export const Route = createFileRoute("/careers")({
   head: () => meta("Careers in Home Health | Elsmar Home Health Care Detroit", "Join our care team. Explore nursing, therapy, and home health aide opportunities with Elsmar in Detroit."),
@@ -19,7 +19,9 @@ function Careers() {
             <ul className="space-y-3 text-lg text-muted-foreground">
               <li>Registered Nurses (RN)</li><li>Licensed Practical Nurses (LPN)</li><li>Physical, Occupational & Speech Therapists</li><li>Home Health Aides</li>
             </ul>
-            <ClientNote>Current openings and benefits to be supplied by Elsmar.</ClientNote>
+            <p className="border-t pt-6 text-muted-foreground">Contact our office to ask about current openings, qualifications, and the application process.</p>
+            <h3 className="text-lg font-bold">Care with purpose</h3>
+            <p className="text-muted-foreground">Home health professionals support patients in familiar surroundings, working together with families and physicians toward each patient's care goals.</p>
           </div>
           <div className="lg:col-span-2"><ContactForm variant="career" /></div>
         </div>

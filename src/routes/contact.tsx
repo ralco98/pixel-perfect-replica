@@ -11,7 +11,7 @@ export const Route = createFileRoute("/contact")({
 function Contact() {
   return (
     <>
-      <PageHero eyebrow="Contact" title="Request home health services." intro="Send us a message or call — we'll help you understand the next step." />
+      <PageHero eyebrow="Contact" title="Request home health services." intro="Call our office to discuss your needs, or prepare your inquiry details below before you call." />
       <section className="py-24">
         <div className="container-x grid gap-14 lg:grid-cols-3">
           <div className="space-y-8">

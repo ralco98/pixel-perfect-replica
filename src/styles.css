@@ -35,6 +35,7 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+  --color-photo-overlay: var(--photo-overlay);
 }
 
 :root {
@@ -62,6 +63,8 @@
   --border: oklch(0.9 0.01 85);
   --input: oklch(0.88 0.01 85);
   --ring: oklch(0.42 0.06 168);
+  --photo-overlay: oklch(0.18 0.015 168);
+  --photo-shade: linear-gradient(90deg, color-mix(in oklab, var(--photo-overlay) 88%, transparent), color-mix(in oklab, var(--photo-overlay) 52%, transparent) 55%, transparent);
 }
 
 @layer base {
@@ -73,7 +76,7 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
   }
-  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.02em; }
+  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: 0; }
   :focus-visible { outline: 2px solid var(--color-ring); outline-offset: 2px; }
 }
 
@@ -89,7 +92,7 @@
   font-family: var(--font-display);
   font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.18em;
+  letter-spacing: 0;
   text-transform: uppercase;
   color: var(--color-primary);
 }
@@ -103,7 +106,9 @@
   font-family: var(--font-display);
   font-size: 0.8rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0;
+  white-space: normal;
+  text-align: center;
   text-transform: uppercase;
   border-radius: var(--radius);
   transition: background-color .2s, color .2s, border-color .2s;
@@ -128,7 +133,7 @@
   font-family: var(--font-display);
   font-size: 0.8rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0;
   text-transform: uppercase;
   color: var(--color-primary);
   border-bottom: 1px solid var(--color-gold);
@@ -142,6 +147,12 @@
   from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: none; }
 }
+.photo-shade { background: var(--photo-shade); }
+@media (max-width: 767px) {
+  .photo-shade { background: color-mix(in oklab, var(--photo-overlay) 70%, transparent); }
+}
 @media (prefers-reduced-motion: reduce) {
   .fade-up { animation: none; }
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: 0s !important; }
 }

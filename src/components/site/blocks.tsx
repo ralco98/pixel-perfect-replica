@@ -4,14 +4,14 @@ import { SITE } from "@/lib/site";
 
 export function PageHero({ eyebrow, title, intro, image }: { eyebrow: string; title: string; intro?: string; image?: string }) {
   return (
-    <section className="bg-warm">
-      <div className={`container-x grid items-center gap-12 py-16 md:py-24 ${image ? "lg:grid-cols-2" : ""}`}>
+    <section className={`relative overflow-hidden ${image ? "bg-photo-overlay text-primary-foreground" : "bg-warm"}`}>
+      {image && <><img src={image} alt="" className="absolute inset-0 h-full w-full object-cover object-center" width={1200} height={900} /><div className="photo-shade absolute inset-0" /></>}
+      <div className={`container-x relative py-14 md:py-20 ${image ? "flex min-h-[460px] items-center" : ""}`}>
         <div className="fade-up max-w-2xl">
-          <p className="eyebrow">{eyebrow}</p>
-          <h1 className="mt-5 text-4xl font-bold leading-[1.08] text-foreground md:text-6xl">{title}</h1>
-          {intro && <p className="mt-6 text-lg leading-relaxed text-muted-foreground">{intro}</p>}
+          <p className={`eyebrow ${image ? "text-primary-foreground" : ""}`}>{eyebrow}</p>
+          <h1 className="mt-5 text-4xl font-bold leading-[1.12] md:text-5xl">{title}</h1>
+          {intro && <p className={`mt-6 max-w-xl text-lg leading-relaxed ${image ? "text-primary-foreground/90" : "text-muted-foreground"}`}>{intro}</p>}
         </div>
-        {image && <img src={image} alt="" className="aspect-[4/3] w-full object-cover" width={1200} height={900} />}
       </div>
     </section>
   );
