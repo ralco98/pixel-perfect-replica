@@ -1,4 +1,4 @@
 # Front-end completion
-- [ ] Finish page presentation and replace unfinished placeholder sections.
-- [ ] Complete accessible navigation and honest, validated form states.
-- [ ] Verify every page, service detail, and core interactions.
+- [x] Finish page presentation and replace unfinished placeholder sections.
+- [x] Complete accessible navigation and honest, validated form states.
+- [x] Verify every page, service detail, and core interactions.

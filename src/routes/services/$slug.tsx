@@ -6,7 +6,7 @@ import family from "@/assets/family.jpg";
 import { SERVICES, SITE } from "@/lib/site";
 import { FinalCTA, PageHero, meta } from "@/components/site/blocks";
 
-const IMAGES: Record<string, string> = { "physical-therapy": therapy, "occupational-therapy": therapy, "medical-social-services": family, "home-health-aide": family };
+const IMAGES: Record<string, string> = { "skilled-nursing": hero, "physical-therapy": therapy, "occupational-therapy": therapy, "speech-therapy": family, "medical-social-services": family, "home-health-aide": family };
 
 export const Route = createFileRoute("/services/$slug")({
   loader: ({ params }) => {
