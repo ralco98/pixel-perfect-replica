@@ -34,20 +34,21 @@ function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="relative">
-        <img src={hero} alt="A home health nurse checking an older man's blood pressure in his living room" className="h-[560px] w-full object-cover md:h-[720px]" width={1920} height={1088} />
-        <div className="container-x relative -mt-40 md:absolute md:inset-x-0 md:bottom-16 md:mt-0">
-          <div className="fade-up max-w-2xl bg-background p-8 md:p-12">
-            <p className="eyebrow">Home Health Care in Detroit</p>
-            <h1 className="mt-5 text-4xl font-bold leading-[1.05] md:text-6xl">
-              Professional Home Health Care, <span className="font-serif font-medium italic text-primary">right where you need it.</span>
+      <section className="relative overflow-hidden bg-photo-overlay text-primary-foreground">
+        <img src={hero} alt="A home health nurse checking an older man's blood pressure in his living room" className="absolute inset-0 h-full w-full object-cover object-[65%_center]" width={1920} height={1088} fetchPriority="high" />
+        <div className="photo-shade absolute inset-0" />
+        <div className="container-x relative flex min-h-[min(620px,75svh)] items-center py-14 md:py-20">
+          <div className="fade-up max-w-xl">
+            <p className="eyebrow text-primary-foreground">Home Health Care in Detroit</p>
+            <h1 className="mt-5 text-4xl font-bold leading-[1.1] md:text-6xl">
+              Elsmar<br />Home Health Care
             </h1>
-            <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+            <p className="mt-6 max-w-lg text-lg leading-relaxed text-primary-foreground/90">
               Professional home health services delivered in the comfort of home, with care centered around each patient's needs and plan of care.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link to="/contact" className="btn btn-primary">Request Home Health Services</Link>
-              <a href={SITE.tel} className="btn btn-outline">Call {SITE.phone}</a>
+              <Link to="/contact" className="btn btn-light">Request Care</Link>
+              <a href={SITE.tel} className="btn border border-primary-foreground/60 hover:bg-primary-foreground/10">Call {SITE.phone}</a>
             </div>
           </div>
         </div>
@@ -154,10 +155,11 @@ function Home() {
             <p className="mt-6 max-w-md text-lg text-muted-foreground">We're grateful to the patients and families who have shared their experience with Elsmar.</p>
             <a href={SITE.mapsUrl} target="_blank" rel="noreferrer" className="link-arrow mt-8 inline-block">Read reviews on Google →</a>
           </div>
-          <blockquote className="border-l-2 border-gold bg-warm p-10 md:p-14">
-            <p className="font-serif text-3xl italic leading-snug md:text-4xl">“Patient stories will appear here once approved by the families who share them.”</p>
-            <footer className="mt-6 text-sm text-muted-foreground">Placeholder — verified testimonials to be supplied by Elsmar.</footer>
-          </blockquote>
+          <div className="border-l-2 border-gold pl-8 md:pl-12">
+            <h2 className="text-3xl font-bold leading-tight">A conversation is a good place to start.</h2>
+            <p className="mt-5 text-lg text-muted-foreground">Choosing care is personal. Talk with our team about your questions, the care you need, and the next steps for your family.</p>
+            <Link to="/contact" className="link-arrow mt-6 inline-block">Talk with our team →</Link>
+          </div>
         </div>
       </section>
 
@@ -165,7 +167,7 @@ function Home() {
       <section className="bg-mist py-24">
         <div className="container-x grid gap-12 lg:grid-cols-2">
           <SectionHead eyebrow="Rooted in Detroit" title="Local care from a Detroit-based team." intro="Our office is located in Midtown Detroit. Call us to confirm whether we can provide services at your address." />
-          <div className="bg-background p-10">
+          <div className="border-l-2 border-gold pl-8">
             <h3 className="text-xl font-bold">Visit or call our office</h3>
             <address className="mt-4 not-italic leading-relaxed text-muted-foreground">{SITE.address1}<br />{SITE.address2}</address>
             <p className="mt-4 text-muted-foreground">{SITE.hours}</p>

@@ -4,7 +4,7 @@ import hero from "@/assets/hero.jpg";
 import therapy from "@/assets/therapy.jpg";
 import family from "@/assets/family.jpg";
 import { SERVICES, SITE } from "@/lib/site";
-import { FinalCTA, meta } from "@/components/site/blocks";
+import { FinalCTA, PageHero, meta } from "@/components/site/blocks";
 
 const IMAGES: Record<string, string> = { "physical-therapy": therapy, "occupational-therapy": therapy, "medical-social-services": family, "home-health-aide": family };
 
@@ -24,20 +24,11 @@ function ServicePage() {
   const others = SERVICES.filter((s) => s.slug !== service.slug);
   return (
     <>
-      <section className="bg-warm">
-        <div className="container-x grid items-center gap-12 py-16 md:py-24 lg:grid-cols-2">
-          <div className="fade-up">
-            <Link to="/services" className="eyebrow">← All services</Link>
-            <h1 className="mt-5 text-4xl font-bold leading-[1.08] md:text-6xl">{service.name}</h1>
-            <p className="mt-6 text-lg leading-relaxed text-muted-foreground">{service.intro}</p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link to="/contact" className="btn btn-primary">Request {service.name}</Link>
-              <a href={SITE.tel} className="btn btn-outline">Call {SITE.phone}</a>
-            </div>
-          </div>
-          <img src={IMAGES[service.slug] ?? hero} alt="" className="aspect-[4/3] w-full object-cover" width={1200} height={900} />
-        </div>
-      </section>
+      <PageHero eyebrow="Home health services" title={service.name} intro={service.intro} image={IMAGES[service.slug] ?? hero} />
+      <div className="container-x flex flex-wrap items-center justify-between gap-5 border-b py-6">
+        <Link to="/services" className="link-arrow">← All services</Link>
+        <div className="flex flex-wrap gap-3"><Link to="/contact" className="btn btn-primary">Request Care</Link><a href={SITE.tel} className="btn btn-outline">Call {SITE.phone}</a></div>
+      </div>
       <section className="py-24">
         <div className="container-x grid gap-16 md:grid-cols-2">
           <List title="Who it may help" items={service.helps} />

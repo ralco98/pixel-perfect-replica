@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import team from "@/assets/team.jpg";
-import { ClientNote, FinalCTA, PageHero, SectionHead, meta } from "@/components/site/blocks";
+import { FinalCTA, PageHero, SectionHead, meta } from "@/components/site/blocks";
 
 export const Route = createFileRoute("/about")({
   head: () => meta("About Elsmar Home Health Care | Detroit, MI", "Learn about Elsmar Home Health Care, a Detroit-based home health agency focused on professional, compassionate care at home."),
@@ -23,7 +23,7 @@ function About() {
           <SectionHead eyebrow="Our mission" title="Professional home health care, right where you need it." />
           <div className="space-y-5 text-lg leading-relaxed text-muted-foreground">
             <p>We believe people often heal best in familiar surroundings. Our role is to bring skilled clinical care into the home and to support the families who care for the people they love.</p>
-            <ClientNote>Company history, founding year, and leadership information to be supplied by Elsmar.</ClientNote>
+            <p>Each patient's needs are different. Care is coordinated with the patient's physician, with attention to practical goals, clear communication, and the routines of everyday life.</p>
           </div>
         </div>
       </section>
